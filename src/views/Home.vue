@@ -72,23 +72,23 @@
 
 <script>
 export default {
-    // // 判断是否登录
-    // beforeCreate() {
-    //     const token = sessionStorage.getItem('token');
-    //     //判断是否登录
-    //     if(!token) {
-    //         this.$message.warning('请先登录');
-    //         this.$router.push('/login');
-    //     }
-    // },
-    // methods:{
-    //     handleLogout() {
-    //         // 清除token
-    //         this.$message.success('退出成功');
-    //         //跳转到登录页面
-    //         this.$router.push('/login');
-    //     }
-    // }
+    // 判断是否登录
+    beforeCreate() {
+        const token = sessionStorage.getItem('token');
+        //判断是否登录
+        if(!token) {
+            this.$message.warning('请先登录');
+            this.$router.push('/login');
+        }
+    },
+    methods:{
+        handleLogout() {
+            // 清除token
+            this.$message.success('退出成功');
+            //跳转到登录页面
+            this.$router.push('/login');
+        }
+    }
 }
 </script>
 

@@ -34,26 +34,30 @@ export default {
         }
     },
     methods:{
-        handleLogin(){
-            this.$http
-                .post('login', this.formData)
-                .then((response)=>{
-                    console.log(response);
-                    const  data = response.data;
-                    const {meta:{msg,status}} = data;
-                    if(status===200) {
+        // handleLogin(){
+        //     console.log('adsfdg');
+            
+        // }
+      async  handleLogin(){
+         const response = await  this.$http.post('login', this.formData);
+               
+                    const { meta: { msg , status } } = response.data;
+        
+
+                    if(status === 200) {
+                        console.log(response.data);
+                        
                         //成功
                         this.$message.success(msg);
                         sessionStorage.setItem('token',response.data.data.token);
                         this.$router.push('/');
                     }else {
                         //失败
-                        this.$message.err(msg);
+                        console.log(response);
+                        
+                        this.$message.error('用户名或密码错误!');
                     }
-                })
-                .catch((err)=>{
-                    console.log(err);
-                })
+                
         }
     }
 }
